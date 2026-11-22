@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
-const { DatabaseSync } = require('node:sqlite');
 const { sqliteDbPath, databaseUrl } = require('../config');
 
 class DatabaseAdapter {
@@ -67,6 +66,7 @@ class DatabaseAdapter {
         );
       `);
     } else {
+      const { DatabaseSync } = require('node:sqlite');
       fs.mkdirSync(path.dirname(sqliteDbPath), { recursive: true });
       this.sqlite = new DatabaseSync(sqliteDbPath);
       this.sqlite.exec(`

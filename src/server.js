@@ -32,8 +32,11 @@ app.use(
       if (corsOrigin.includes('*') || corsOrigin.includes(origin)) {
         return callback(null, true);
       }
-      if (/^https:\/\/[a-z0-9-]+-960275674145\.europe-west1\.run\.app$/i.test(origin) ||
-          /^https:\/\/[a-z0-9-]+\.europe-west1\.run\.app$/i.test(origin) ||
+      if (/^https:\/\/[a-z0-9-]+\.(?:[a-z0-9-]+\.)?run\.app$/i.test(origin) ||
+          /^https:\/\/[a-z0-9-]+\.vercel\.app$/i.test(origin) ||
+          /^https:\/\/[a-z0-9-]+\.netlify\.app$/i.test(origin) ||
+          /^https:\/\/[a-z0-9-]+\.pages\.dev$/i.test(origin) ||
+          /^https:\/\/[a-z0-9-]+\.onrender\.com$/i.test(origin) ||
           origin === 'http://localhost:5173' ||
           origin === 'http://localhost:8080') {
         return callback(null, true);

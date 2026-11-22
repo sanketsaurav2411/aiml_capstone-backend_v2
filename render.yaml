@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: tariffflow-backend
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: 22.14.0
+      - key: JWT_SECRET
+        generateValue: true
+      - key: AI_SERVICE_URL
+        sync: false
+      - key: INTERNAL_API_KEY
+        sync: false
+      - key: USE_GCP_OIDC
+        value: "false"
+      - key: DATABASE_URL
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false

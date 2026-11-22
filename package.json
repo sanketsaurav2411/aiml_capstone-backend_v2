@@ -4,6 +4,9 @@
   "private": true,
   "description": "Secure gateway backend for TariffFlow AI (Indian Customs & ITC-HS Platform)",
   "main": "src/server.js",
+  "engines": {
+    "node": ">=22.5.0"
+  },
   "scripts": {
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
