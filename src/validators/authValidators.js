@@ -11,11 +11,18 @@ const loginValidator = [
     .withMessage('Password must contain at least one number'),
 ];
 
+const registerValidator = [
+  body('name').trim().isLength({ min: 2, max: 100 }).withMessage('Name must be between 2 and 100 characters'),
+  body('company').optional().trim().isLength({ max: 150 }),
+  ...loginValidator,
+];
+
 const logoutValidator = [
   header('authorization').optional().matches(/^Bearer\s.+$/).withMessage('Authorization header must be in Bearer token format'),
 ];
 
 module.exports = {
   loginValidator,
+  registerValidator,
   logoutValidator,
 };

@@ -1,12 +1,13 @@
 {
   "name": "capstone-backend",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "Secure backend for the capstone project",
+  "description": "Secure gateway backend for TariffFlow AI (Indian Customs & ITC-HS Platform)",
   "main": "src/server.js",
   "scripts": {
     "dev": "nodemon src/server.js",
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "test": "node --test tests/*.test.js"
   },
   "keywords": [
     "capstone",
@@ -27,6 +28,7 @@
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "multer": "^2.0.2",
+    "pg": "^8.13.1",
     "uuid": "^11.0.2"
   },
   "devDependencies": {

@@ -5,3 +5,5 @@ uploads/*
 coverage/
 .DS_Store
 npm-debug.log*
+data/*.sqlite
+data/*.sqlite-*

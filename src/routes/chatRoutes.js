@@ -5,7 +5,13 @@ const { handleValidationErrors } = require('../lib/validation');
 const { AppError } = require('../lib/errors');
 const { requireAuth } = require('../middleware/auth');
 const { uploadDir, maxUploadSize } = require('../config');
-const { processChat } = require('../controllers/chatController');
+const {
+  processChat,
+  getConversations,
+  getConversationById,
+  deleteConversation,
+  getMetrics,
+} = require('../controllers/chatController');
 const { chatValidator } = require('../validators/chatValidators');
 
 const router = express.Router();
@@ -52,5 +58,9 @@ const upload = multer({
 });
 
 router.post('/chat', requireAuth, upload.array('files', 3), chatValidator, handleValidationErrors, processChat);
+router.get('/conversations', requireAuth, getConversations);
+router.get('/conversations/:id', requireAuth, getConversationById);
+router.delete('/conversations/:id', requireAuth, deleteConversation);
+router.get('/metrics', requireAuth, getMetrics);
 
 module.exports = router;

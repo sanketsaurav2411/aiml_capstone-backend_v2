@@ -2,14 +2,15 @@ const { createDemoRequest } = require('../services/demoService');
 
 async function requestDemo(req, res, next) {
   try {
-    const { name, email, company, message } = req.body;
+    const { name, email, mobile, company, message } = req.body;
 
-    const demoRequest = createDemoRequest({
+    const demoRequest = await createDemoRequest({
       name,
       email,
+      mobile,
       company,
       message,
-      requestedBy: req.user.sub,
+      requestedBy: req.user?.sub || null,
     });
 
     return res.status(201).json({
